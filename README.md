@@ -4,11 +4,11 @@
 
 **Tạo EFI** chạy hackintosh cho máy tính của bạn một cách tự động
 
-# 🎉 Phiên bản 0.0.4 có gì mới?
+# 🎉 Phiên bản 0.0.5 có gì mới?
 
-- Cho phép thay đổi nhanh phần cứng có thể và phiên bản macOS cần sử dụng
-- Hỗ trợ các CPU thế hệ 10 và mới hơn cài những bản macOS cũ hơn
-- Hỗ trợ CPU Alder Lake
+- Kiểm tra thông tin dGPU, wifi card
+- Gợi ý macOS phù hợp với cấu hình
+- Hỗ trợ phần cứng nhiều hơn
 [more](https://github.com/lzhoang2601/lzhoang2601.github.io/blob/main/CHANGELOG.md)...
 
 # 🤖 Ưu điểm?
@@ -43,5 +43,5 @@ Vui lòng nhắn tin vấn đề bạn gặp [tại đây](https://www.facebook.
 
 - Cộng đồng developers hackintosh ([acidanthera](https://github.com/acidanthera), [alexandred](https://github.com/acidanthera), [OpenIntelWireless](https://github.com/OpenIntelWireless),...) với bootloader và kexts
 - [BootstrapMade](https://bootstrapmade.com/) với website
-- [Đông Khang](https://www.facebook.com/namebii), [Võ Nguyễn Hoàng Long](https://www.facebook.com/100070274020733), [Nguyễn Văn Long](https://www.facebook.com/100009655189811), [Thái Dương](https://www.facebook.com/100049633440705)
+- [Đông Khang](https://www.facebook.com/namebii), [Võ Nguyễn Hoàng Long](https://www.facebook.com/100070274020733), [Nguyễn Văn Long](https://www.facebook.com/100009655189811), [Vũ D. Thảo](https://www.facebook.com/anhbeovuthao1605)
 

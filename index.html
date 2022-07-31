@@ -164,10 +164,10 @@
 
               <div class="version">
                 <i class="bx bx-exit"></i>
-                <h4>Phiên bản: 0.0.4</h4>
-                <p>- Cho phép thay đổi nhanh phần cứng có thể và phiên bản macOS cần sử dụng</p>
-                <p>- Hỗ trợ các CPU thế hệ 10 và mới hơn cài những bản macOS cũ hơn</p>
-                <p>- Hỗ trợ CPU Alder Lake</p>
+                <h4>Phiên bản: 0.0.5</h4>
+                <p>- Kiểm tra thông tin dGPU, wifi card</p>
+                <p>- Gợi ý macOS phù hợp với cấu hình</p>
+                <p>- Hỗ trợ phần cứng nhiều hơn</p>
                 <p>đang cập nhật...</p>
               </div>
 
@@ -176,19 +176,33 @@
                 <h4>genSMBIOS</h4>
                 <form action="" method="post" role="form" class="gensmbios-form">
                   <div class="form-group mt-3">
-                    <input type="text" class="form-control" name="SMBIOSName" placeholder="SMBIOS name" required>
+                    <input type="text" class="form-control" id="SMBIOSName" placeholder="SMBIOS name">
                   </div>
                   <div class="my-3">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
-                    <div class="sent-message">
-                      <div class="MLB"></div>
-                      <div class="SystemProductName"></div>
-                      <div class="SystemSerialNumber"></div>
-                      <div class="SystemUUID"></div>
-                    </div>
+                    <div class="sent-message"></div>
+                  </div>   
+                  <div class="text-center"><button id="submit" type="submit">Gen SMBIOS</button></div>
+                </form>
+                <form action="" enctype="multipart/form-data" method="POST">
+                  <input type="file" name="fileName" class="selectFile ist" required/>
+                </form>
+              </div>
+
+              <div class="updateEFI">
+                <i class="bx bx-upload"></i>
+                <h4>Cập nhật EFI</h4>
+                <form action="" enctype="multipart/form-data" method="POST" class="updateefi-form">
+                  <div class="form-group mt-3">
+                    <span class="prompt">Kéo thả tệp vào đây hoặc nhấp để tải lên</span>	
                   </div>
-                  <div class="text-center"><button type="submit">SMBIOS Gen</button></div>
+                  <input type="file" name="fileName" class="selectFile efi" required/>
+                  <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message"></div>
+                  </div>   
                 </form>
               </div>
 
@@ -198,25 +212,41 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
+            <div class="buildMode">
+              <label class="ode">Nhập thủ công hoặc dùng file .json</label>
+              <form action="" enctype="multipart/form-data" method="POST" class="scroll uploadJSON">
+                <label class="prompt">Kéo thả tệp vào đây hoặc nhấp để tải lên</label>
+                <input type="file" name="fileName" class="selectFile jon" required/>
+              </form>
+            </div>
             <form action="" method="post" role="form" class="ocbuilder-form">
               <input type="text" class="form-control" id="motherboardName" placeholder="Mainboard name, Mini PC / Laptop model">
-              <div class="scroll motherboardName mother mt-3">
+              <div class="scroll moreo mother mt-3">
                 <label>Hardware Supported:</label>
-                <div class="option motherboardNameList mothersel">
+                <div class="option mothersel">
                 </div>
               </div>
               <input type="text" class="form-control mt-3" id="cpuName" placeholder="CPU name">
-              <div class="scroll motherboardName cpunam mt-3">
-                <label></label>
-                <div class="option motherboardNameList cpunamsel">
+              <div class="scroll moreo cpunam mt-3">
+                <label>CPU Name:</label>
+                <div class="option cpunamsel">
                 </div>
               </div>
-              <p class="type mt-3"><span class="typex"></span></p>
               <input type="text" class="form-control mt-3" id="dGPUName" placeholder="dGPU name">
+              <div class="scroll moreo dpunam mt-3">
+                <label>GPU Name:</label>
+                <div class="option dpunamsel">
+                </div>
+              </div>
               <input type="text" class="form-control mt-3" id="WiFiCardName" placeholder="WiFi card">
               <input type="text" class="form-control mt-3" id="ethernetName" placeholder="Ethernet card">
               <input type="text" class="form-control mt-3" id="MAC" placeholder="MAC Address">
               <input type="text" class="form-control mt-3" id="codecName" placeholder="Codec name">
+              <div class="scroll moreo codnam mt-3">
+                <label>Codec Supported:</label>
+                <div class="option codnamsel">
+                </div>
+              </div>
               <div class="scroll touchpad mt-3">
                 <label>Touchpad</label>
                 <div class="option">
@@ -235,23 +265,18 @@
               </div>
               <div class="scroll macVersion mt-3">
                 <label>macOS Version</label>
-                <div class="option macVersionOp">
-                  <a class="macv" id="22">macOS Ventura</a>,
-                  <a class="macv" id="21">macOS Monterey</a>,
-                  <a class="macv" id="20">macOS Big Sur</a>,
-                  <a class="macv" id="19">macOS Catalina</a>,
-                  <a class="macv" id="18">macOS Mojave</a>,
-                  <a class="macv" id="17">macOS High Sierra</a>
-                </div>
+                <div class="option macVersionOp"></div>
               </div>
               <div class="my-3">
-                <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message"></div>
+                <div class="loading">Loading</div>
               </div>
-              <div class="text-center ocbi"><button type="submit">
+              <div class="text-center ocbi">
+                <button type="submit">
                   <div class="mode">Create EFI</div>
-                </button></div>
+                </button>
+              </div>
             </form>
 
             <div class="fileList"></div>
@@ -515,54 +540,79 @@
                 <p></p>
                 <p>Bây giờ chỉ việc nhấn K và Enter là hoàn tất</p>
 
+                <img src="assets/img/blog/post-3-12.png" class="img-fluid" alt="">
+
+                <p></p>
+                <p>Có một số máy gặp vấn đề về port như hình dưới, bạn cần làm thêm như sau</p>
+
                 <img src="assets/img/blog/post-3-8.png" class="img-fluid" alt="">
+
+                <p></p>
+                <p>Trong folder chứa Windows.exe, bạn tìm đến usb.json</p>
+
+                <img src="assets/img/blog/post-3-9.png" class="img-fluid" alt="">
+
+                <p></p>
+                <p>Mở usb.json lên bằng Notepad hoặc bật kì ứng dụng nào có thể</p>
+
+                <img src="assets/img/blog/post-3-10.png" class="img-fluid" alt="">
+
+                <p></p>
+                <p>Bạn tìm kiếm lần lượt các số port báo lỗi, bôi đen và xoá đi</p>
+
+                <img src="assets/img/blog/post-3-11.png" class="img-fluid" alt="">
+
+                <p></p>
+                <p>Sau khi xoá xong, bạn lưu lại, đóng rồi mở lại Windows.exe, nhấn S và K là hoàn tất</p>
+
+                <img src="assets/img/blog/post-3-12.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Trở về folder chứa Windows.exe bạn sẽ thấy folder UTBMap.kext</p>
 
-                <img src="assets/img/blog/post-3-9.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-13.png" class="img-fluid" alt="">
 
                 <p></p>
                 <h3>Thêm USBToolBox.kext và UTBMap.kext vào EFI</h3>
 
                 <p>Giải nén file USBToolBox-x.x.x-RELEASE.zip bạn nhận được folder USBToolBox.kext</p>
 
-                <img src="assets/img/blog/post-3-10.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-14.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Giải nén tiếp file EFI .zip bạn đã tạo từ bài viết trước, copy USBToolBox.kext và UTBMap.kext vào \EFI\OC\Kexts</p>
 
-                <img src="assets/img/blog/post-3-11.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-15.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Quay lại folder \EFI\OC, mở file config.plist</p>
 
-                <img src="assets/img/blog/post-3-12.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-16.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p><lzh>Bạn có thể tìm hiểu thêm và sử dụng một số app chỉnh sửa plist dễ dàng và an toàn hơn. Nhưng đây mình sẽ dùng Notepad vì là ứng dụng có sẵn</lzh></p>
 
-                <img src="assets/img/blog/post-3-13.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-17.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Bạn tìm kiếm nếu có USBToolBox và UTBMap như hình dưới thì tiếp tục với bài viết sau luôn nhé</p>
 
-                <img src="assets/img/blog/post-3-14.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-18.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Nếu không có USBToolBox và UTBMap, bạn tìm kiếm USBInjectAll, hãy bôi đen và xoá nếu tìm thấy</p>
 
-                <img src="assets/img/blog/post-3-15.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-19.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Bạn nhấn <a class="coSb">vào đây</a> để copy rồi dán vào config.plist như sau</p>
 
-                <img src="assets/img/blog/post-3-16.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-20.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Tìm kiếm tiếp XhciPortLimit chuyển từ true sang false</p>
 
-                <img src="assets/img/blog/post-3-17.png" class="img-fluid" alt="">
+                <img src="assets/img/blog/post-3-21.png" class="img-fluid" alt="">
 
                 <p></p>
                 <p>Lưu config.plist nữa là hoàn thành, đọc tiếp bài sau để cài đặt macOS nhé!</p>
@@ -994,13 +1044,6 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="cookiePopup">
-      <span class="message">Trang web này sử dụng cookie để đảm bảo bạn có được trải nghiệm tốt nhất trên trang web của chúng tôi.
-        <a class="policylink" href="https://www.cookiesandyou.com" target="_blank">Tìm hiểu thêm</a>
-      </span>
-      <a id="cookie-btn">Đồng ý</a>
-  </div>
-
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1010,6 +1053,7 @@
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="https://ocbuilder.app:2302/ocbuilder.js"></script>
+  <script src="assets/vendor/plist_parse.js"></script>
   <script src="assets/vendor/blog/blog.js"></script>
 
   <script src="assets/js/main.js"></script>

@@ -1,5 +1,11 @@
 # Changelog 
-#### Last version: 0.0.4
+#### Last version: 0.0.5
+
+## Version 0.0.5 (08/2022)
+
+- Kiểm tra thông tin dGPU, wifi card
+- Gợi ý macOS phù hợp với cấu hình
+- Hỗ trợ phần cứng nhiều hơn
 
 ## Version 0.0.4 (07/2022)
 
